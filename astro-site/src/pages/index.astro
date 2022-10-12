@@ -1,0 +1,114 @@
+---
+import { Icon } from 'astro-icon';
+import { links, socialLinks } from "../links";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Linked Up</title>
+		<style>
+			body {
+				background-color: #212121;
+				color: #fff;
+				font-family: sans-serif;
+			}
+			a {
+				color: inherit;
+			}
+			ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			.main_article {
+				margin: 0 auto;
+				max-width: 700px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				height: 90vh;
+				padding: 10vh 0;
+			}
+
+			.top_content {
+				text-align: center;
+				margin-bottom: 2rem;
+			}
+			
+			.profile_img {
+				border-radius: 50%;
+				/*margin-bottom: 1rem;*/
+			}
+
+			.social-links_list {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				grid-gap: 1rem;
+			}
+			.social-links_list .social-links_link {
+				transition: 100ms ease-in-out;
+			}
+			.social-links_list .social-links_link:hover {
+				transform: scale(1.1);
+			}
+			.links_list{
+				width: 100%;
+				margin: 1rem auto;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			.links_list .links_link{
+				display: flex;
+				width: 100%;
+				text-align: center;
+				margin-bottom: 1rem;
+				color: #212121;
+				background-color: #fff;
+				border-radius: 3rem;
+				transition: 100ms ease-in-out;
+				cursor: pointer;
+			}
+			.links_list .links_link:hover{
+				transform: scale(1.025);
+			}
+			.links_list .links_link a{
+				padding: 1rem 2rem;
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				text-decoration: none;
+			}
+		</style>
+	</head>
+	<body>
+		<article class="main_article">
+			<div class="top_content">
+				<img class="profile_img" width="120px" height="120px" src="imagen.jpg" alt="Profile photo" />
+				<h1>Adrian Lara</h1>
+				<p>Software developer</p>
+				<ul class="social-links_list">
+					{socialLinks.map((link) => (
+						<li class="social-links_link">
+							<a href={link.url}>
+								<Icon name={link.icon} width="36px" height="36px" />
+							  </a>
+						</li>
+					  ))}
+				</ul>
+			</div>
+
+			<ul class="links_list">
+				{links.map(link => (
+					<li class="links_link"><a href={link.url}>{link.text}</a></li>
+				))}
+			</ul>
+		</article>
+
+	</body>
+</html>
